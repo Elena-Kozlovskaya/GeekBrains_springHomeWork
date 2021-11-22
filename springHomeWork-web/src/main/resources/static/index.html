@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--управляется приложением app-->
+<html ng-app="homework_app">
+<head>
+    <meta charset="UTF-8">
+<!--  стили-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<!--library angularJS-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <!--привязка к коду JS в файле index.js-->
+  <script src="index.js"></script>
+</head>
+
+<body>
+<!--блок управляемый контроллером-->
+<div class="container" ng-controller="indexController">
+  <h3>Список продуктов</h3>
+  <table class="table table-hover" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>ID</td>
+      <td>Наименование продукта</td>
+      <td>Цена</td>
+      <td>Действие</td>
+    </tr>
+    <tbody>
+    <!--аналог foreach-->
+    <!--кладем в js файле в блок scope StudentsList и обрабатываем его здесь-->
+    <tr ng-repeat="p in ProductsList">
+      <!--{{s.id}} - объект ng, который нужно обработать и во что-то преобразовать -->
+      <td>{{p.id}}</td>
+      <td>{{p.title}}</td>
+      <td>
+        <button class="btn btn-primary" ng-click="changeCost(p.id, -5)">-</button>
+        {{p.cost}}
+        <button class="btn btn-primary" ng-click="changeCost(p.id, 5)">+</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" ng-click="deleteProduct(p.id)">Удалить</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

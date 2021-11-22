@@ -1,15 +1,15 @@
-package com.kozlovskaya.springHomeWorkweb.data;
+package com.kozlovskaya.lesson4.data;
 
 public class Product {
 
     private Long id;
     private String title;
-    private int cost;
+    private Integer cost;
 
     public Product() {
     }
 
-    public Product(Long id, String title, int cost) {
+    public Product(Long id, String title, Integer cost) {
         this.id = id;
         this.title = title;
         this.cost = cost;
@@ -31,7 +31,7 @@ public class Product {
         this.id = id;
     }
 
-    public int getCost() {
+    public Integer getCost() {
         return cost;
     }
 
