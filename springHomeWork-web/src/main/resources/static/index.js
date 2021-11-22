@@ -1,22 +1,20 @@
-angular.module('app', []).controller('indexController', function ($scope, $http) {
-    const contextPath = 'http://localhost:8189/app';
-   /* $scope. - блок связки js-кода и html*/
-    //функция згрузки студентов
+angular.module('homework_app', []).controller('indexController', function ($scope, $http) {
+    const contextPath = 'http://localhost:8189/homework_app';
+
     $scope.loadProducts = function () {
-        //отправляем запрос on backend on address '/students'
         $http.get(contextPath + '/products')
             .then(function (response) {
-                $scope.ProductsList = response.data; // data тело ответа на запрос
+                $scope.ProductsList = response.data;
             });
     };
      $scope.deleteProduct = function(productId){
          $http.get(contextPath + '/products/delete/' + productId)
-             .then(function (response) { //когда ответ (response)придет, то делай это V
+             .then(function (response) {
                  alert('DELETED')
-                 $scope.loadProducts();// обновляем список студентов после удаления
+                 $scope.loadProducts();
              });
     }
-    $scope.changeScore = function(productId, delta){
+    $scope.changeCost = function(productId, delta){
          $http({
              url: contextPath + '/products/change_cost/',
              method: 'GET',
@@ -24,8 +22,8 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
                  productId: productId,
                  delta: delta
              }
-         }).then(function (response) { //когда ответ (response)придет, то делай это V
-                $scope.loadProducts();// обновляем список студентов после удаления
+         }).then(function (response) {
+                $scope.loadProducts();
             });
     }
 
